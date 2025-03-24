@@ -25,8 +25,6 @@ module.exports.index = async (req, res) => {
   res.render("allList/Landscape.ejs", { listing });
 };
 
-};
-
 module.exports.renderNewForm = (req, res) => {
   res.render("allList/new.ejs");
 };
