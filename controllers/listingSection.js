@@ -5,7 +5,6 @@ const mapToken = process.env.MAP_TOKEN;
 const geocodingClient = mbxGeocoding({ accessToken: mapToken });
 
 module.exports.index = async (req, res) => {
-  module.exports.index = async (req, res) => {
   let { search, title } = req.query;
   let filter = {};
 
