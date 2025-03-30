@@ -95,6 +95,12 @@ module.exports.commitEdit = async (req, res) => {
   res.redirect(`/listing/${id}`);
 };
 
+module.exports.bookHotel = async (req, res) => {
+  let listing = await Listing.find();
+  res.render("allList/book.ejs", { listing });
+};
+
+
 module.exports.destroyListing = async (req, res) => {
   let { id } = req.params;
   await Listing.findByIdAndDelete(id);

@@ -14,18 +14,19 @@ body {
     background-color: white;
 }
 
-.search-btn{
+.search-btn {
     background-color: #fe424d !important;
     color: white !important;
     border-radius: 25px !important;
     padding: 0 1rem 0 1rem !important;
 }
-.search-btn i{
+
+.search-btn i {
     display: inline;
     margin-right: 0.3rem;
 }
 
-.search-inp{
+.search-inp {
     border-radius: 25px !important;
     padding: 0.5rem 2rem 0.5rem 3rem !important;
     font-size: 0.9rem !important;
@@ -34,45 +35,53 @@ body {
 
 /* FILTER section */
 
-#filters{
+#filters {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
 }
+
 #filters a {
-    text-decoration: none; 
-    color: inherit; 
-    font-weight: normal; 
+    text-decoration: none;
+    color: inherit;
+    font-weight: normal;
 }
-.filter{
+
+.filter {
     text-align: center;
     margin-right: 2rem;
     margin-top: 1rem;
     opacity: 0.7;
 }
-.filter:hover{
+
+.filter:hover {
     opacity: 1;
     cursor: pointer;
 }
 
-.filter p{
+.filter p {
     font-size: 0.8rem;
 }
 
-.tax_info{
-    display: none;
-    
+#filters .clear:hover {
+    color: white;
 }
 
-.tax_switch{
+.tax_info {
+    display: none;
+
+}
+
+.tax_switch {
     border: 0.7px solid black;
-    border-radius: 1rem;
-    height: 3.2rem;
+    border-radius: 0.5rem;
+    height: 2.3rem;
     display: flex;
     align-items: center;
     padding: 1rem;
-    
+
 }
+
 /* footer */
 
 .fa-compass {

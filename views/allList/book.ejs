@@ -1,0 +1,40 @@
+<% layout("/layouts/boilerplate") %>
+
+    <body>
+        <div class="container mt-5">
+            <h2 class="text-center">Book Your Stay</h2>
+            <form action="/listing/<%= listing._id %>/book" method="POST">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Full Name</label>
+                    <input type="text" class="form-control" id="name" name="booking[name]" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="booking[email]" required>
+                </div>
+                <div class="mb-3">
+                    <label for="phone" class="form-label">Phone Number</label>
+                    <input type="tel" class="form-control" id="phone" name="booking[phone]" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="checkin" class="form-label">Check-in Date</label>
+                    <input type="date" class="form-control" id="checkin" name="booking[checkin]" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="checkout" class="form-label">Check-out Date</label>
+                    <input type="date" class="form-control" id="checkout" name="booking[checkout]" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="guests" class="form-label">Number of Guests</label>
+                    <input type="number" class="form-control" id="guests" name="booking[guests]" min="1" required>
+                </div>
+
+                <button type="submit" class="btn btn-color">Confirm Booking</button>
+            </form>
+            <br>
+        </div>
+    </body>

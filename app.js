@@ -15,6 +15,9 @@ const User = require("./models/userSchema.js");
 const listingRoutes = require("./routes/listing.js");
 const reviewRoutes = require("./routes/review.js");
 const userRoutes = require("./routes/user.js");
+const bookRoutes = require("./routes/booking.js");
+const dashboardRoutes = require("./routes/dashboard.js");
+const adminRoutes = require("./routes/admin.js");
 const { constants } = require("buffer");
 
 app.set("views", path.join(__dirname, "views"));
@@ -25,6 +28,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(method_override("_method"));
 
 const DB_URL = process.env.ATLAS_URL;
+// const MONGO_URL = 'mongodb://127.0.0.1:27017/wander';
+
 
 main()
   .then(() => {
@@ -34,18 +39,20 @@ main()
 
 async function main() {
   await mongoose.connect(DB_URL);
+  // await mongoose.connect(MONGO_URL);
 }
 
 const store = MongoStore.create({
   mongoUrl: DB_URL,
+  // mongoUrl: MONGO_URL,
   crypto: {
     secret: process.env.SESSION_SECRET,
   },
   touchAfter: 24 * 3600,
 });
 
-store.on("err",()=>{
-    console.log("Error in Database",err);
+store.on("err", () => {
+  console.log("Error in Database", err);
 })
 
 const sessionOptions = {
@@ -60,7 +67,6 @@ const sessionOptions = {
   },
 };
 
-// const MONGO_URL='mongodb://127.0.0.1:27017/wander';
 
 // app.get("/", (req, res) => {
 //     res.send("Good To Go");
@@ -82,6 +88,10 @@ app.use((req, res, next) => {
   next();
 });
 
+app.get("/", (req, res) => {
+  res.redirect("/listing");
+});
+
 // Listing Route
 app.use("/listing", listingRoutes);
 
@@ -90,6 +100,17 @@ app.use("/listing/:id/reviews", reviewRoutes);
 
 //User Route
 app.use("/", userRoutes);
+
+// Book Route
+app.use("/listing", bookRoutes);
+
+//Dashboard Route
+app.use("/dashboard", dashboardRoutes);
+
+//Admin Route
+app.use("/admin", adminRoutes);
+
+// app.use("/admin", adminRoutes);
 
 app.all("*", (req, res, next) => {
   next(new ExpressError(404, "Search Page was Not Found"));

@@ -64,3 +64,15 @@ module.exports.isAuthor = async (req, res, next) => {
     }
     next();
 };
+module.exports.isAdmin = (req, res, next) => {
+    // console.log("Checking Admin Access");
+    // console.log("User Object:", req.user);
+
+    if (!req.user || !req.user.isAdmin) {
+        console.log("Access Denied: Not an Admin");
+        req.flash("error", "Access Denied");
+        return res.redirect("/");
+    }
+    console.log("Access Granted: Admin Verified");
+    next();
+};
