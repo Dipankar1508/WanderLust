@@ -1,0 +1,112 @@
+<% layout("layouts/boilerplate") %>
+
+    <body>
+        <div class="container mt-5">
+            <h2 class="text-center mb-4">Admin Dashboard</h2>
+
+            <!-- Users Section -->
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h4>Users</h4>
+                </div>
+                <div class="card-body">
+                    <% if (users.length> 0) { %>
+                        <ul class="list-group">
+                            <% users.forEach(user=> { %>
+                                <% if (!user.isAdmin) { %> <!-- Hide Admin Users -->
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <span><strong>Email:</strong>
+                                            <%= user.email %>
+                                        </span>
+                                        <form action="/admin/users/<%= user._id %>?_method=DELETE" method="POST"
+                                            class="d-inline">
+                                            <button class="btn btn-danger btn-sm">Delete</button>
+                                        </form>
+                                    </li>
+                                    <% } %>
+                                        <% }) %>
+                        </ul>
+                        <% } else { %>
+                            <p class="text-muted">No users found.</p>
+                            <% } %>
+                </div>
+            </div>
+
+            <!-- Bookings Section -->
+            <div class="card mb-4">
+                <div class="card-header bg-success text-white">
+                    <h4>Bookings</h4>
+                </div>
+                <div class="card-body">
+                    <% if (bookings.length> 0) { %>
+                        <ul class="list-group">
+                            <% bookings.forEach(booking=> { %>
+                                <li class="list-group-item">
+                                    <strong>Listing:</strong>
+                                    <%= booking.listing ? booking.listing.title : "Deleted Listing" %> <br>
+
+                                        <strong>Booked by:</strong>
+                                        <%= booking.user ? booking.user.username : "Unknown User" %> <br>
+
+                                            <strong>Check-in:</strong>
+                                            <%= booking.checkin.toDateString() %> <br>
+
+                                                <strong>Check-out:</strong>
+                                                <%= booking.checkout.toDateString() %>
+
+                                                    <form action="/admin/bookings/<%= booking._id %>?_method=DELETE"
+                                                        method="POST" class="d-inline float-end">
+                                                        <button class="btn btn-danger btn-sm">Delete</button>
+                                                    </form>
+                                </li>
+                                <% }) %>
+                        </ul>
+                        <% } else { %>
+                            <p class="text-muted">No bookings yet.</p>
+                            <% } %>
+                </div>
+            </div>
+
+
+            <!-- Listings Section -->
+            <div class="card mb-4">
+                <div class="card-header bg-warning text-white">
+                    <h4>Listings</h4>
+                </div>
+                <div class="card-body">
+                    <% if (listings.length> 0) { %>
+                        <ul class="list-group">
+                            <% listings.forEach(listing=> { %>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <strong>Title:</strong>
+                                        <%= listing.title %> <br>
+
+                                            <strong>Owner:</strong>
+                                            <%= listing.owner ? listing.owner.username || listing.owner.email
+                                                : "Unknown Owner" %> <br>
+
+                                                <strong>Location:</strong>
+                                                <%= listing.location %>
+                                    </div>
+                                    <div class="d-flex">
+                                        <form action="/listing/<%= listing._id %>/edit">
+                                            <button class="btn btn-primary btn-sm">Edit</button>
+                                        </form>
+                                        &emsp;
+                                        <form action="/admin/listings/<%= listing._id %>?_method=DELETE" method="POST"
+                                            class="d-inline">
+                                            <button class="btn btn-danger btn-sm">Delete</button>
+                                        </form>
+                                    </div>
+                                </li>
+                                <% }) %>
+
+                        </ul>
+                        <% } else { %>
+                            <p class="text-muted">No listings found.</p>
+                            <% } %>
+                </div>
+            </div>
+        </div>
+    </body>

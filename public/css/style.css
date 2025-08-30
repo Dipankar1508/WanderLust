@@ -1,0 +1,182 @@
+body {
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    flex: 1;
+}
+
+.navbar {
+    height: 5rem;
+    background-color: white;
+}
+
+.search-btn {
+    background-color: #fe424d !important;
+    color: white !important;
+    border-radius: 25px !important;
+    padding: 0 1rem 0 1rem !important;
+}
+
+.search-btn i {
+    display: inline;
+    margin: 0.2rem;
+}
+
+.search-inp {
+    border-radius: 25px !important;
+    padding: 0.5rem 2rem 0.5rem 3rem !important;
+    font-size: 0.9rem !important;
+}
+
+
+/* FILTER section */
+
+#filters {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+#filters a {
+    text-decoration: none;
+    color: inherit;
+    font-weight: normal;
+}
+
+.filter {
+    text-align: center;
+    margin-right: 2rem;
+    margin-top: 1rem;
+    opacity: 0.7;
+}
+
+.filter:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.filter p {
+    font-size: 0.8rem;
+}
+
+#filters .clear:hover {
+    color: white;
+}
+
+.tax_info {
+    display: none;
+
+}
+
+.tax_switch {
+    border: 0.7px solid black;
+    border-radius: 0.5rem;
+    height: 2.3rem;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+
+}
+
+/* footer */
+
+.fa-compass {
+    color: #fe424d;
+    font-size: 2rem;
+}
+
+.nav-link {
+    color: #222222 !important;
+}
+
+.f-links,
+.f-brand {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.f-links a {
+    text-decoration: none;
+    padding-left: 3px;
+    color: #222222;
+}
+
+.f-links a:hover {
+    text-decoration: underline;
+}
+
+.f-social {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.f-social i {
+    font-size: 1.2rem;
+    margin-right: 1rem;
+}
+
+.f-info {
+    text-align: center;
+    height: 7rem;
+    background-color: #ebebeb;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+/* cards */
+
+.listing-card {
+    border: none !important;
+    margin-bottom: 2rem;
+}
+
+.card-img-top {
+    border-radius: 1rem;
+    width: 100% !important;
+    object-fit: cover !important;
+}
+
+.card-body {
+    padding: 0 !important;
+}
+
+.card-text {
+    font-weight: 400 !important;
+}
+
+.card-img-overlay {
+    opacity: 0;
+}
+
+.card-img-overlay:hover {
+    opacity: 0.1;
+    background-color: white;
+}
+
+.btn-color {
+    background-color: #fe424d !important;
+    border: none !important;
+}
+
+.show-img {
+    height: 40vh;
+}
+
+.b-btns {
+    display: flex;
+}
+
+/* Maps */
+
+#map {
+    height: 400px;
+    width: 50vw;
+}

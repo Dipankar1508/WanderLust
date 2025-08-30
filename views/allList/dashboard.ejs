@@ -1,0 +1,83 @@
+<% layout("/layouts/boilerplate") %>
+
+    <body>
+        <div class="container my-3">
+            <h2 class="text-center mb-3">Your Dashboard</h2>
+
+            <div class="row">
+                <!-- BOOKINGS SECTION -->
+                <div class="col-md-6 ">
+                    <div class="card shadow-lg border-0">
+                        <div class="card-header bg-primary text-white">
+                            <h4><i class="fa-solid fa-calendar-check"></i> Your Bookings</h4>
+                        </div>
+                        <div class="card-body mx-3">
+                            <% if (userBookings.length> 0) { %>
+                                <ul class="list-group">
+                                    <% userBookings.forEach(booking=> { %>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <h5 class="text-primary"><i class="fa-solid fa-house"></i>
+                                                    <%= booking.listing.title %>
+                                                </h5>
+                                                <p><strong>Check-in:</strong>
+                                                    <%= booking.checkin.toDateString() %>
+                                                </p>
+                                                <p><strong>Check-out:</strong>
+                                                    <%= booking.checkout.toDateString() %>
+                                                </p>
+                                            </div>
+
+                                            <!-- DELETE BOOKING BUTTON -->
+                                            <form action="/dashboard/bookings/<%= booking._id %>?_method=DELETE"
+                                                method="POST">
+                                                <button type="submit" class="btn btn-danger btn-sm">
+                                                    <i class="fa-solid fa-trash"></i> Cancel
+                                                </button>
+                                            </form>
+                                        </li>
+                                        <% }) %>
+                                </ul>
+                                <% } else { %>
+                                    <p class="text-muted">You have no bookings yet.</p>
+                                    <% } %>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LISTINGS SECTION -->
+                <div class="col-md-6">
+                    <div class="card shadow-lg border-0">
+                        <div class="card-header bg-success text-white">
+                            <h4><i class="fa-solid fa-list"></i> Your Listings</h4>
+                        </div>
+                        <div class="card-body mx-3">
+                            <% if (userListings.length> 0) { %>
+                                <ul class="list-group">
+                                    <% userListings.forEach(listing=> { %>
+                                        <li class="list-group-item">
+                                            <h5 class="text-success"><i class="fa-solid fa-location-dot"></i>
+                                                <%= listing.title %>
+                                            </h5>
+                                            <p><strong>Location:</strong>
+                                                <%= listing.location %>
+                                            </p>
+                                        </li>
+                                        <% }) %>
+                                </ul>
+                                <% } else { %>
+                                    <p class="text-muted">You haven't listed any properties yet.</p>
+                                    <% } %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BUTTON TO ADD NEW LISTING -->
+            <!-- <div class="text-center mt-4">
+                <a href="/listing/new" class="btn btn-outline-primary btn-lg">
+                    <i class="fa-solid fa-plus"></i> List a New Property
+                </a>
+            </div> -->
+        </div>
+    </body>
